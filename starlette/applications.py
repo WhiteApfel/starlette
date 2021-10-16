@@ -122,6 +122,9 @@ class Starlette:
     def host(self, host: str, app: ASGIApp, name: str = None) -> None:
         self.router.host(host, app=app, name=name)
 
+    def include(self, app: BaseRoute) -> None:
+        self.router.include(app)
+
     def add_middleware(self, middleware_class: type, **options: typing.Any) -> None:
         self.user_middleware.insert(0, Middleware(middleware_class, **options))
         self.middleware_stack = self.build_middleware_stack()

@@ -697,6 +697,9 @@ class Router:
         route = Host(host, app=app, name=name)
         self.routes.append(route)
 
+    def include(self, app: BaseRoute) -> None:
+        self.routes.append(app)
+
     def add_route(
         self,
         path: str,
